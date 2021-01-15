@@ -1,4 +1,5 @@
 import mysql from 'mysql';
+import util from 'util';
 
 var connection = mysql.createConnection({
     host: 'localhost',
@@ -12,5 +13,7 @@ connection.connect(error => {
         throw error;
     }
 });
+
+connection.query = util.promisify(connection.query).bind(connection);
 
 export default connection;

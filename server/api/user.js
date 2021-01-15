@@ -10,12 +10,21 @@ router.use('/:userId/habits', (req, res, next) => {
     next();
 }, habitRouter);
 
-router.post('/', async (req, res) => {
+router.post('/register', async (req, res) => {
     const response = await UserService.register({
         'email': req.body.email,
         'password': req.body.password,
         'first_name': req.body.firstName,
         'last_name': req.body.lastName
+    });
+
+    res.json(response);
+});
+
+router.post('/login', async (req, res) => {
+    const response = await UserService.verify({
+        'email': req.body.email,
+        'password': req.body.password
     });
 
     res.json(response);

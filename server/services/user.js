@@ -9,14 +9,21 @@ class UserService {
         this.userModel = new UserModel(sql);
     }
 
-    async register(properties) {
-        properties.uid = uuid();
+    async register(user) {
+        user.uid = uuid();
 
         const saltRounds = 10;
-        const plainTextPassword = properties.password;
-        properties.password = await bcrypt.hash(plainTextPassword, saltRounds);
-        
-        return this.userModel.create(properties);
+        const plainTextPassword = user.password;
+        user.password = await bcrypt.hash(plainTextPassword, saltRounds);
+
+        return this.userModel.create(user);
+    }
+
+    async verify(user) {
+        const storedUser = await this.userModel.read(user);
+        const match = await bcrypt.compare(user.password, storedUser.password);
+
+        return match && storedUser.uid;
     }
 }
 
