@@ -12,9 +12,10 @@ router.use('/:userId/habits', (req, res, next) => {
 
 router.post('/', async (req, res) => {
     const response = await UserService.register({
+        'email': req.body.email,
+        'password': req.body.password,
         'first_name': req.body.firstName,
-        'last_name': req.body.lastName,
-        'email': req.body.email
+        'last_name': req.body.lastName
     });
 
     res.json(response);
