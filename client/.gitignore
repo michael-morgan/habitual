@@ -1,11 +1,18 @@
-# Folders
-node_modules/*
-test-dnd
-test-redux
-progess_tracker
+node_modules/**/*
+.expo/*
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+
+# macOS
+.DS_Store
 
 # Files
 .env
 .vscode
-jest.config.js
 prettier.config.js
