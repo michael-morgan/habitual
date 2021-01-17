@@ -1,0 +1,11 @@
+# Folders
+node_modules/*
+test-dnd
+test-redux
+progess_tracker
+
+# Files
+.env
+.vscode
+jest.config.js
+prettier.config.js
