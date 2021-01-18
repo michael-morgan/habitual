@@ -12,7 +12,7 @@ CREATE TABLE `users` (
 
 CREATE TABLE `habits` (
 	`uid` VARCHAR(255) NOT NULL UNIQUE PRIMARY KEY,
-    `user_uid` VARCHAR(255) NOT NULL UNIQUE,
+    `user_uid` VARCHAR(255) NOT NULL,
     `name` VARCHAR(255) NOT NULL,
     `description` VARCHAR(255) NULL,
     `streak` INT NOT NULL DEFAULT 0,

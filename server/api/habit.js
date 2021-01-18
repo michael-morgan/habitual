@@ -1,14 +1,30 @@
+import HabitService from '../services/habit.js';
+
 import logRouter from './log.js';
 
 import express from 'express';
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    const USER_ID = req.userId;
+router.get('/', async (req, res) => {
+    const userId = req.userId;
+    const response = await HabitService.fetch({ userId });
+
+    res.json(response);
 });
 
 router.get('/:habitId', (req, res) => {
-    const USER_ID = req.userId;
+    const userId = req.userId;
+});
+
+router.post('/', async (req, res) => {
+    const userId = req.userId;
+    const response = await HabitService.register({
+        'user_uid': userId,
+        'name': req.body.name,
+        'description': req.body.description
+    });
+
+    res.json(response);
 });
 
 router.use('/:habitId/logs', (req, res, next) => {
