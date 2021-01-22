@@ -1,7 +1,7 @@
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
 dotenv.config();
-import mysql from "mysql";
-import util from "util";
+import mysql from 'mysql';
+import util from 'util';
 
 var connection = mysql.createConnection({
   host: process.env.HOST,
@@ -14,7 +14,7 @@ var connection = mysql.createConnection({
 connection.connect((error) => {
   if (error) throw error;
 
-  console.log("Connected to mysql database");
+  console.log('Connected to mysql database');
 });
 
 connection.query = util.promisify(connection.query).bind(connection);
