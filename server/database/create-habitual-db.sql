@@ -26,3 +26,7 @@ CREATE TABLE `logs` (
     FOREIGN KEY (`habit_uid`)
 		REFERENCES `habits` (`uid`)
 );
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+
+flush privileges;
